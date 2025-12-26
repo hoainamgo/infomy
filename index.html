@@ -39,6 +39,7 @@
 
             /* Solid Colors */
             --primary: #667eea;
+            --primary-rgb: 102, 126, 234;
             --primary-dark: #764ba2;
             --accent: #f093fb;
             --bg-light: #fafbfc;
@@ -577,12 +578,72 @@
             color: var(--text-main);
             font-size: 1.1rem;
             line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .post-full-content h2 {
+            margin: 40px 0 20px;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+        }
+
+        .post-full-content p {
+            margin-bottom: 20px;
+        }
+
+        .post-full-content blockquote {
+            border-left: 5px solid var(--primary);
+            background: #f8fafc;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 20px 20px 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .post-full-content blockquote strong {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            color: var(--primary-dark);
+        }
+
+        .post-full-content ul,
+        .post-full-content ol {
+            margin: 20px 0 30px 25px;
+        }
+
+        .post-full-content li {
+            margin-bottom: 12px;
+        }
+
+        .post-full-content figure {
+            margin: 40px 0;
         }
 
         .post-full-content img {
             max-width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .post-full-content figcaption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .news-sapo {
+            padding: 25px;
+            background: rgba(var(--primary-rgb), 0.05);
             border-radius: 20px;
-            margin: 30px 0;
+            border: 1px dashed var(--primary);
+            margin-bottom: 35px !important;
         }
 
         .loading-posts {
