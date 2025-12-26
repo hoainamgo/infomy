@@ -904,8 +904,11 @@
 
             header.innerHTML = `<h1 style="margin-bottom:30px; color:var(--primary-dark);">${title}</h1>`;
 
-            const signature = `<div class="post-signature"><strong><em>*Bài viết được viết từ trải nghiệm thực tế, với mong muốn giúp bạn xây dựng "Ngôi nhà Internet" của riêng mình.*</em></strong></div>`;
-            content.innerHTML = BloggerCore.extractFullContent(fullContent) + signature;
+            let processedContent = BloggerCore.extractFullContent(fullContent);
+            // Chuyển đổi *nội dung* thành <em>nội dung</em>
+            processedContent = processedContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            content.innerHTML = processedContent;
 
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
