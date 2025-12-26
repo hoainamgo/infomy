@@ -646,6 +646,14 @@
             margin-bottom: 35px !important;
         }
 
+        .post-signature {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
         .loading-posts {
             text-align: center;
             grid-column: 1 / -1;
@@ -895,7 +903,9 @@
             const title = entry.title.$t;
 
             header.innerHTML = `<h1 style="margin-bottom:30px; color:var(--primary-dark);">${title}</h1>`;
-            content.innerHTML = BloggerCore.extractFullContent(fullContent);
+
+            const signature = `<div class="post-signature"><strong>Bài viết được viết từ trải nghiệm thực tế, với mong muốn giúp bạn xây dựng "Ngôi nhà Internet" của riêng mình.</strong></div>`;
+            content.innerHTML = BloggerCore.extractFullContent(fullContent) + signature;
 
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
