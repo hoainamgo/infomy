@@ -872,7 +872,9 @@
                     const title = entry.title.$t;
                     const img = BloggerCore.getHeroImage(content) || 'https://via.placeholder.com/400x200?text=News';
                     const category = entry.category ? entry.category[0].term : 'Tin tức';
-                    const snippet = BloggerCore.extractDescription(content, entry.summary?.$t, 120);
+                    let snippet = BloggerCore.extractDescription(content, entry.summary?.$t, 120);
+                    // Chuyển đổi *nội dung* thành <em>nội dung</em> trong snippet
+                    snippet = snippet.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
                     return `
                         <div class="news-card" onclick="openPost(${index})">
