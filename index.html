@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoài Nam - Hôm nay là Quan Trọng! | contact.io.vn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Gradients */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            
+            /* Solid Colors */
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #f093fb;
+            --bg-light: #fafbfc;
+            --bg-dark: #0f172a;
+            --text-main: #1a202c;
+            --text-muted: #718096;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            
+            /* Shadows */
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: var(--gradient-hero);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/hero-bg.png') center/cover no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            object-fit: cover;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero p.subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero p.desc {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* --- Bento About --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 20px;
+        }
+
+        .bento-item {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .bento-tall { grid-row: span 2; }
+        .bento-wide { grid-column: span 2; }
+
+        .bento-item h3 { margin-bottom: 15px; color: var(--primary-dark); }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--accent); display: block; }
+        .stat-label { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- Values Section --- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+        }
+
+        .value-card:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- Skills --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            padding: 10px 25px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            color: var(--primary-dark);
+            border: 1px solid #eee;
+        }
+
+        /* --- Contact --- */
+        .contact {
+            background: var(--gradient-dark);
+            color: white;
+            border-radius: 50px;
+            padding: 80px 40px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact h2 { color: white; margin-bottom: 20px; }
+        .contact p { margin-bottom: 40px; opacity: 0.8; }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-wide { grid-column: span 1; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">contact.io.vn</a>
+        <div class="nav-links">
+            <a href="#about">Về tôi</a>
+            <a href="#values">Giá trị</a>
+            <a href="#services">Dịch vụ</a>
+            <a href="#contact">Liên hệ</a>
+        </div>
+        <div class="mobile-menu-btn">☰</div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content container">
+            <img src="assets/images/profile.jpg" alt="Hoài Nam" class="profile-img">
+            <h1>Hôm nay là Quan Trọng!</h1>
+            <p class="subtitle">Kiến trúc sư số | Xây Ngôi nhà Internet cho bạn</p>
+            <p class="desc">Giúp bạn sở hữu "Ngôi nhà Internet" riêng, làm việc và hạnh phúc tại chính ngôi nhà của mình. Cùng nhau xây dựng tự do tài chính qua mô hình Business For Home (BFH).</p>
+            <div class="hero-btns">
+                <a href="mailto:hello@contact.io.vn" class="btn btn-primary">Liên hệ ngay</a>
+                <a href="#values" class="btn btn-glass">Khám phá BFH</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>Về tôi</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-item bento-tall">
+                <h3>Câu chuyện</h3>
+                <p>Tôi là Hoài Nam, một người đàn ông 40 tuổi đang sống thong dong và bình an. <br><br> Từng loay hoay mãi chưa xây nổi một "ngôi nhà riêng" trên Internet, cho đến khi cơ duyên đưa tôi đến với một nền tảng đặc biệt. Từ đó, tôi không chỉ xây được "ngôi nhà" cho mình, mà còn giúp nhiều người khác tìm thấy con đường tự do tài chính.</p>
+            </div>
+            <div class="bento-item">
+                <h3>Thống kê</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-val">5+</span>
+                        <span class="stat-label">Năm kinh nghiệm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-item">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-val">20+</span>
+                        <span class="stat-label">Dự án thành công</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-item bento-wide">
+                <h3>Sứ mệnh</h3>
+                <p style="font-size: 1.5rem; font-weight: 600; color: var(--primary);">"Mỗi người sinh ra cần một cái tên. Đã đến lúc mỗi người cần có một 'địa chỉ nhà' riêng trên Internet để tự do tài chính."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="container">
+        <div class="section-title">
+            <h2>Giá trị tôi mang lại</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">🎯</span>
+                <h3>Thành công - Hạnh phúc - Bình an</h3>
+                <p>Không chỉ thành công về tài chính, mà còn hạnh phúc trong tâm hồn và bình an trong mỗi khoảnh khắc.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">💡</span>
+                <h3>Lắng nghe & Thấu hiểu</h3>
+                <p>Tôi lắng nghe bạn trước, thấu hiểu nhu cầu, rồi mới đưa ra giải pháp phù hợp nhất.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">✨</span>
+                <h3>Sống trọn vẹn</h3>
+                <p>Sống thong dong, tận hưởng từng khoảnh khắc, không hối hạ trong việc "tìm kiếm thành công".</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container">
+        <div class="section-title">
+            <h2>Dịch vụ</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>AI Master & architect</h3>
+                <p>Làm chủ hệ sinh thái công nghệ để tạo ra hàng loạt website/doanh nghiệp số cho bạn.</p>
+            </div>
+            <div class="value-card">
+                <h3>Chuyên gia BFH</h3>
+                <p>Xây dựng mô hình Business For Home chuyên nghiệp, bền vững.</p>
+            </div>
+            <div class="value-card">
+                <h3>Giải pháp All-in-one</h3>
+                <p>Cung cấp giải pháp trọn gói để bạn trở thành "Công dân số toàn cầu".</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <div class="section-title">
+            <h2>Chuyên môn & Kỹ năng</h2>
+        </div>
+        <div class="skills-container">
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">AI Integration</span>
+            <span class="skill-tag">Business Strategy</span>
+            <span class="skill-tag">Content Creation</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">SEO</span>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <div class="contact">
+            <h2>Hãy cùng tạo nên điều tuyệt vời</h2>
+            <p>Liên hệ với tôi để bắt đầu xây dựng "Ngôi nhà Internet" của bạn</p>
+            <div class="contact-links">
+                <a href="mailto:hello@contact.io.vn" class="contact-item">📧 hello@contact.io.vn</a>
+                <a href="https://viet-ai.online" class="contact-item" target="_blank">🌐 viet-ai.online</a>
+                <a href="https://www.facebook.com/hoainamgo/" class="contact-item" target="_blank">📘 Nam Hoài Đất Mỏ</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Agent Me 2025 - Bình dị từ tâm, hạnh phúc, bình an tại nhà.</p>
+            <p>&copy; 2025 Hoài Nam - contact.io.vn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="core_logic.js"></script>
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach((section) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 1s ease-out';
+            observer.observe(section);
+        });
+
+        // Simple function to add 'show' style
+        const updateStyles = () => {
+             const style = document.createElement('style');
+             style.innerHTML = `.show { opacity: 1 !important; transform: translateY(0) !important; }`;
+             document.head.appendChild(style);
+        };
+        updateStyles();
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
