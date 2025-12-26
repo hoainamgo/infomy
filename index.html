@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoài Nam - Hôm nay là Quan Trọng! | contact.io.vn</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             /* Primary Gradients */
@@ -14,7 +17,7 @@
             --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            
+
             /* Solid Colors */
             --primary: #667eea;
             --primary-dark: #764ba2;
@@ -23,12 +26,12 @@
             --bg-dark: #0f172a;
             --text-main: #1a202c;
             --text-muted: #718096;
-            
+
             /* Glassmorphism */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            
+
             /* Shadows */
             --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
@@ -48,7 +51,9 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
         }
@@ -121,9 +126,17 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .hero::before {
@@ -155,8 +168,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .hero h1 {
@@ -253,10 +273,18 @@
             transform: translateY(-5px);
         }
 
-        .bento-tall { grid-row: span 2; }
-        .bento-wide { grid-column: span 2; }
+        .bento-tall {
+            grid-row: span 2;
+        }
 
-        .bento-item h3 { margin-bottom: 15px; color: var(--primary-dark); }
+        .bento-wide {
+            grid-column: span 2;
+        }
+
+        .bento-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
 
         .stats {
             display: flex;
@@ -266,9 +294,21 @@
             height: 100%;
         }
 
-        .stat-item { text-align: center; }
-        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--accent); display: block; }
-        .stat-label { font-size: 0.9rem; color: var(--text-muted); }
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
 
         /* --- Values Section --- */
         .values-grid {
@@ -325,8 +365,15 @@
             margin-bottom: 50px;
         }
 
-        .contact h2 { color: white; margin-bottom: 20px; }
-        .contact p { margin-bottom: 40px; opacity: 0.8; }
+        .contact h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
 
         .contact-links {
             display: flex;
@@ -365,13 +412,168 @@
 
         /* --- Mobile --- */
         @media (max-width: 768px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .bento-wide { grid-column: span 1; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 3rem; }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-wide {
+                grid-column: span 1;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- News Section --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+
+        .news-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f8fafc;
+        }
+
+        .news-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-footer {
+            margin-top: auto;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- Post Modal --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 30px;
+            overflow-y: auto;
+            position: relative;
+            padding: 50px;
+            animation: modalScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        .post-full-content {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .post-full-content img {
+            max-width: 100%;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .loading-posts {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 50px;
+            color: var(--text-muted);
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -380,6 +582,7 @@
             <a href="#about">Về tôi</a>
             <a href="#values">Giá trị</a>
             <a href="#services">Dịch vụ</a>
+            <a href="#news">Tin tức</a>
             <a href="#contact">Liên hệ</a>
         </div>
         <div class="mobile-menu-btn">☰</div>
@@ -390,7 +593,8 @@
             <img src="assets/images/profile.jpg" alt="Hoài Nam" class="profile-img">
             <h1>Hôm nay là Quan Trọng!</h1>
             <p class="subtitle">Kiến trúc sư số | Xây Ngôi nhà Internet cho bạn</p>
-            <p class="desc">Giúp bạn sở hữu "Ngôi nhà Internet" riêng, làm việc và hạnh phúc tại chính ngôi nhà của mình. Cùng nhau xây dựng tự do tài chính qua mô hình Business For Home (BFH).</p>
+            <p class="desc">Giúp bạn sở hữu "Ngôi nhà Internet" riêng, làm việc và hạnh phúc tại chính ngôi nhà của
+                mình. Cùng nhau xây dựng tự do tài chính qua mô hình Business For Home (BFH).</p>
             <div class="hero-btns">
                 <a href="mailto:hello@contact.io.vn" class="btn btn-primary">Liên hệ ngay</a>
                 <a href="#values" class="btn btn-glass">Khám phá BFH</a>
@@ -405,7 +609,10 @@
         <div class="bento-grid">
             <div class="bento-item bento-tall">
                 <h3>Câu chuyện</h3>
-                <p>Tôi là Hoài Nam, một người đàn ông 40 tuổi đang sống thong dong và bình an. <br><br> Từng loay hoay mãi chưa xây nổi một "ngôi nhà riêng" trên Internet, cho đến khi cơ duyên đưa tôi đến với một nền tảng đặc biệt. Từ đó, tôi không chỉ xây được "ngôi nhà" cho mình, mà còn giúp nhiều người khác tìm thấy con đường tự do tài chính.</p>
+                <p>Tôi là Hoài Nam, một người đàn ông 40 tuổi đang sống thong dong và bình an. <br><br> Từng loay hoay
+                    mãi chưa xây nổi một "ngôi nhà riêng" trên Internet, cho đến khi cơ duyên đưa tôi đến với một nền
+                    tảng đặc biệt. Từ đó, tôi không chỉ xây được "ngôi nhà" cho mình, mà còn giúp nhiều người khác tìm
+                    thấy con đường tự do tài chính.</p>
             </div>
             <div class="bento-item">
                 <h3>Thống kê</h3>
@@ -426,7 +633,8 @@
             </div>
             <div class="bento-item bento-wide">
                 <h3>Sứ mệnh</h3>
-                <p style="font-size: 1.5rem; font-weight: 600; color: var(--primary);">"Mỗi người sinh ra cần một cái tên. Đã đến lúc mỗi người cần có một 'địa chỉ nhà' riêng trên Internet để tự do tài chính."</p>
+                <p style="font-size: 1.5rem; font-weight: 600; color: var(--primary);">"Mỗi người sinh ra cần một cái
+                    tên. Đã đến lúc mỗi người cần có một 'địa chỉ nhà' riêng trên Internet để tự do tài chính."</p>
             </div>
         </div>
     </section>
@@ -439,7 +647,8 @@
             <div class="value-card">
                 <span class="value-icon">🎯</span>
                 <h3>Thành công - Hạnh phúc - Bình an</h3>
-                <p>Không chỉ thành công về tài chính, mà còn hạnh phúc trong tâm hồn và bình an trong mỗi khoảnh khắc.</p>
+                <p>Không chỉ thành công về tài chính, mà còn hạnh phúc trong tâm hồn và bình an trong mỗi khoảnh khắc.
+                </p>
             </div>
             <div class="value-card">
                 <span class="value-icon">💡</span>
@@ -490,6 +699,24 @@
         </div>
     </section>
 
+    <section id="news" class="container">
+        <div class="section-title">
+            <h2>Tin tức & Chia sẻ</h2>
+        </div>
+        <div id="posts-container" class="news-grid">
+            <div class="loading-posts">⏳ Đang kết nối dữ liệu Blogger...</div>
+        </div>
+    </section>
+
+    <!-- Modal Bài viết -->
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="postModalHeader"></div>
+            <div id="postModalContent" class="post-full-content"></div>
+        </div>
+    </div>
+
     <section id="contact" class="container">
         <div class="contact">
             <h2>Hãy cùng tạo nên điều tuyệt vời</h2>
@@ -497,7 +724,8 @@
             <div class="contact-links">
                 <a href="mailto:hello@contact.io.vn" class="contact-item">📧 hello@contact.io.vn</a>
                 <a href="https://viet-ai.online" class="contact-item" target="_blank">🌐 viet-ai.online</a>
-                <a href="https://www.facebook.com/hoainamgo/" class="contact-item" target="_blank">📘 Nam Hoài Đất Mỏ</a>
+                <a href="https://www.facebook.com/hoainamgo/" class="contact-item" target="_blank">📘 Nam Hoài Đất
+                    Mỏ</a>
             </div>
         </div>
     </section>
@@ -529,11 +757,85 @@
 
         // Simple function to add 'show' style
         const updateStyles = () => {
-             const style = document.createElement('style');
-             style.innerHTML = `.show { opacity: 1 !important; transform: translateY(0) !important; }`;
-             document.head.appendChild(style);
+            const style = document.createElement('style');
+            style.innerHTML = `.show { opacity: 1 !important; transform: translateY(0) !important; }`;
+            document.head.appendChild(style);
         };
         updateStyles();
+
+        // Blogger Integration
+        const blogUrl = 'https://infohoainam.blogspot.com';
+        let allPosts = [];
+
+        async function loadBloggerNews() {
+            const container = document.getElementById('posts-container');
+            try {
+                // Sử dụng BloggerCore từ core_logic.js
+                allPosts = await BloggerCore.fetchFeed(blogUrl, 6); // Lấy 6 bài mới nhất
+
+                if (!allPosts || allPosts.length === 0) {
+                    container.innerHTML = '<div class="loading-posts">Chưa có bản tin nào mới.</div>';
+                    return;
+                }
+
+                container.innerHTML = allPosts.map((entry, index) => {
+                    const content = entry.content?.$t || entry.summary?.$t || '';
+                    const title = entry.title.$t;
+                    const img = BloggerCore.getHeroImage(content) || 'https://via.placeholder.com/400x200?text=News';
+                    const category = entry.category ? entry.category[0].term : 'Tin tức';
+                    const snippet = BloggerCore.extractDescription(content, entry.summary?.$t, 120);
+
+                    return `
+                        <div class="news-card" onclick="openPost(${index})">
+                            <img src="${img}" class="news-thumb" alt="${title}" onerror="this.src='https://via.placeholder.com/400x200?text=HoaiNam'">
+                            <div class="news-body">
+                                <span class="news-tag">${category}</span>
+                                <h3 class="news-title">${title}</h3>
+                                <p class="news-excerpt">${snippet}</p>
+                                <div class="news-footer">Xem chi tiết →</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error("Blogger load error:", error);
+                container.innerHTML = '<div class="loading-posts">Không thể kết nối với Blogger.</div>';
+            }
+        }
+
+        window.openPost = (index) => {
+            const entry = allPosts[index];
+            const modal = document.getElementById('postModal');
+            const header = document.getElementById('postModalHeader');
+            const content = document.getElementById('postModalContent');
+
+            const fullContent = entry.content?.$t || '';
+            const title = entry.title.$t;
+
+            header.innerHTML = `<h1 style="margin-bottom:30px; color:var(--primary-dark);">${title}</h1>`;
+            content.innerHTML = BloggerCore.extractFullContent(fullContent);
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Close modal
+        document.querySelector('.close-modal').onclick = () => {
+            document.getElementById('postModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        window.onclick = (event) => {
+            const modal = document.getElementById('postModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Initialize News
+        loadBloggerNews();
 
         // Smooth scroll for nav links
         document.querySelectorAll('.nav-links a').forEach(anchor => {
@@ -546,4 +848,5 @@
         });
     </script>
 </body>
+
 </html>

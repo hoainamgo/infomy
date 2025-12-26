@@ -34,10 +34,20 @@ git push -u origin main
 ## Bước 3: Cấu hình Tên miền contact.io.vn
 1. Trên GitHub Repository: Vào **Settings** -> **Pages**.
 2. Tại **Custom domain**, nhập `contact.io.vn` và nhấn **Save**.
-3. Tại trình quản lý tên miền (nhà cung cấp domain):
-   - Trỏ CNAME record `contact` (hoặc `@`) về `your-user.github.io`.
-   - Chờ DNS cập nhật (khoảng 15-30p).
-4. Quay lại GitHub Pages settings, tích chọn **Enforce HTTPS** ngay khi domain đã active.
+3. Tại trình quản lý tên miền (nhà cung cấp domain), anh cấu hình các bản ghi (DNS Records) sau:
+
+   | Loại (Type) | Tên (Host) | Giá trị (Value) |
+   | :--- | :--- | :--- |
+   | **A** | `@` | `185.199.108.153` |
+   | **A** | `@` | `185.199.109.153` |
+   | **A** | `@` | `185.199.110.153` |
+   | **A** | `@` | `185.199.111.153` |
+   | **CNAME** | `www` | `hoainamgo.github.io` |
+
+   *Lưu ý: Nếu nhà cung cấp yêu cầu tên, hãy điền `@` hoặc để trống cho các bản ghi A.*
+
+4. Chờ DNS cập nhật (thường từ 15 phút đến vài tiếng).
+5. Quay lại GitHub Pages settings, tích chọn **Enforce HTTPS** ngay khi domain đã active (nút này sẽ sáng lên).
 
 ---
 🚀 **Chúc mừng anh! Website "Hôm nay là Quan Trọng!" đã sẵn sàng.**
