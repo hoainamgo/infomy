@@ -873,8 +873,8 @@
                     const img = BloggerCore.getHeroImage(content) || 'https://via.placeholder.com/400x200?text=News';
                     const category = entry.category ? entry.category[0].term : 'Tin tức';
                     let snippet = BloggerCore.extractDescription(content, entry.summary?.$t, 120);
-                    // Chuyển đổi *nội dung* thành <em>nội dung</em> trong snippet
-                    snippet = snippet.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                    // Dọn dẹp snippet: bỏ ## và chuyển đổi *nội dung* thành <em>nội dung</em>
+                    snippet = snippet.replace(/##/g, '').replace(/\*(.*?)\*/g, '<em>$1</em>');
 
                     return `
                         <div class="news-card" onclick="openPost(${index})">
@@ -907,8 +907,8 @@
             header.innerHTML = `<h1 style="margin-bottom:30px; color:var(--primary-dark);">${title}</h1>`;
 
             let processedContent = BloggerCore.extractFullContent(fullContent);
-            // Chuyển đổi *nội dung* thành <em>nội dung</em>
-            processedContent = processedContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            // Dọn dẹp nội dung: bỏ ## và chuyển đổi *nội dung* thành <em>nội dung</em>
+            processedContent = processedContent.replace(/##/g, '').replace(/\*(.*?)\*/g, '<em>$1</em>');
 
             content.innerHTML = processedContent;
 
