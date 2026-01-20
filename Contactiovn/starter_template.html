@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ksmart Me - Personal Branding AI</title>
+    <style>
+        /* ===== DESIGN SYSTEM (AI TOOLS DIRECTORY FIDELITY) ===== */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3046be;
+            --secondary: #ff5c00;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --sidebar-width: 260px;
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header-wrapper {
+            background: linear-gradient(135deg, #4169e1 0%, #2d3dcc 100%);
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+
+        .brand-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        /* Layout Area */
+        .main-wrapper {
+            display: flex;
+            max-width: 1920px;
+            margin: var(--header-height) auto 0;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            position: sticky;
+            top: var(--header-height);
+            height: calc(100vh - var(--header-height));
+            overflow-y: auto;
+            flex-shrink: 0;
+            padding: 20px 10px;
+            z-index: 100;
+        }
+
+        .sidebar-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            margin-bottom: 15px;
+            padding: 0 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #2d3748;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 2px;
+        }
+
+        .menu-link:hover {
+            background: #f8fafc;
+            color: var(--primary);
+            padding-left: 20px;
+        }
+
+        .menu-link.active {
+            background: #edf2ff;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 30px;
+            min-width: 0;
+            background: #f0f2f5;
+        }
+
+        /* Page Headers */
+        .page-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .page-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #1a202c;
+            letter-spacing: -0.5px;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Tool Grid & Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid #f0f2f5;
+            text-decoration: none;
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(67, 97, 238, 0.12);
+            border-color: var(--primary);
+            z-index: 10;
+        }
+
+        .tool-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f8fafc;
+            flex-shrink: 0;
+            border: 1px solid #f1f5f9;
+        }
+
+        .tool-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tool-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tool-description {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tool-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            background: var(--secondary);
+            color: white;
+            text-transform: uppercase;
+        }
+
+        /* Detail View */
+        .detail-inpage {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            transition: color 0.2s;
+        }
+
+        .detail-back:hover {
+            color: var(--primary);
+        }
+
+        .detail-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #1a202c;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .post-content-area {
+            font-size: 1.1rem;
+            color: #374151;
+            line-height: 1.8;
+        }
+
+        .post-content-area img {
+            max-width: 100%;
+            border-radius: 16px;
+            margin: 25px 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        /* States */
+        .loading {
+            text-align: center;
+            padding: 100px 0;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .header-container {
+                padding: 0 15px;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-inpage {
+                padding: 20px;
+                border-radius: 0;
+            }
+
+            .detail-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-wrapper">
+        <div class="header-container">
+            <a href="#/" class="brand-title">KSMART<span class="brand-subtitle">me</span></a>
+            <div style="color:white; font-size:0.9rem; font-weight:700; opacity:0.9;">HỆ SINH THÁI ĐỊNH DANH SỐ</div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-label">Module Trợ lý Ksmart.Me</div>
+            <nav id="sidebarMenu">
+                <!-- Sidebar items will be rendered here -->
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <div id="app">
+                <div class="loading">⏳ Đang tải dữ liệu từ Blogger...</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="core_logic.js"></script>
+    <script>
+        const blogUrl = 'https://aihayiovn.blogspot.com';
+        let allEntries = [];
+
+        async function initApp() {
+            const app = document.getElementById('app');
+            try {
+                if (allEntries.length === 0) {
+                    app.innerHTML = '<div class="loading">⏳ Đang kết nối dữ liệu Blogger...</div>';
+                    allEntries = await BloggerCore.fetchFeed(blogUrl);
+                }
+
+                if (!allEntries || allEntries.length === 0) {
+                    throw new Error('Không tìm thấy bài viết nào.');
+                }
+
+                renderSidebar();
+                handleRoute();
+            } catch (error) {
+                app.innerHTML = `
+                    <div style="background:#fff5f5; border:1px solid #feb2b2; padding:30px; border-radius:12px; max-width:600px; margin:50px auto; text-align:center;">
+                        <h2 style="color:#c53030; margin-bottom:15px;">⚠️ Lỗi kết nối</h2>
+                        <p style="color:#742a2a; margin-bottom:20px;">${error.message}</p>
+                        <a href="javascript:location.reload()" style="background:#c53030; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">Thử lại</a>
+                    </div>
+                `;
+            }
+        }
+
+        function renderSidebar() {
+            const menu = document.getElementById('sidebarMenu');
+            const labels = new Set(['🏠 Tất cả công cụ']);
+            allEntries.forEach(entry => {
+                if (entry.category) {
+                    entry.category.forEach(cat => labels.add(cat.term));
+                }
+            });
+
+            const currentHash = location.hash || '#/';
+            menu.innerHTML = Array.from(labels).map(label => {
+                const href = label === '🏠 Tất cả công cụ' ? '#/' : `#/label/${encodeURIComponent(label)}`;
+                const isActive = (currentHash === href);
+                return `<a href="${href}" class="menu-link ${isActive ? 'active' : ''}">${label}</a>`;
+            }).join('');
+        }
+
+        const handleRoute = () => {
+            const route = BloggerCore.getRoute();
+            renderSidebar();
+
+            if (route.type === 'post') {
+                renderDetail(route.value);
+            } else if (route.type === 'label') {
+                renderList(route.value);
+            } else {
+                renderList();
+            }
+            window.scrollTo(0, 0);
+        };
+
+        function renderList(filterLabel = null) {
+            const app = document.getElementById('app');
+            let filtered = allEntries;
+            const displayTitle = (filterLabel && filterLabel !== '🏠 Tất cả công cụ') ? filterLabel : 'Khám phá tất cả công cụ';
+
+            if (filterLabel && filterLabel !== '🏠 Tất cả công cụ') {
+                filtered = allEntries.filter(entry =>
+                    entry.category && entry.category.some(c => c.term === filterLabel)
+                );
+            }
+
+            const items = filtered.map(entry => {
+                const content = entry.content?.$t || entry.summary?.$t || '';
+                const title = entry.title.$t;
+                return {
+                    title: title,
+                    slug: BloggerCore.generateSlug(title),
+                    desc: BloggerCore.extractDescription(content, entry.summary?.$t),
+                    img: BloggerCore.getHeroImage(content) || 'https://via.placeholder.com/100',
+                    price: BloggerCore.extractMeta(content, 'PRICE') || 'FREE',
+                    labels: entry.category ? entry.category.map(c => c.term) : []
+                };
+            });
+
+            app.innerHTML = `
+                <div class="page-header">
+                    <h2 class="page-title">${displayTitle}</h2>
+                    <p class="page-subtitle">Tìm thấy ${filtered.length} công cụ AI tuyệt vời dành cho bạn.</p>
+                </div>
+                <div class="tools-grid">
+                    ${items.map(item => `
+                        <a href="#/post/${item.slug}" class="tool-card">
+                            <span class="tool-badge">${item.price}</span>
+                            <img src="${item.img}" class="tool-icon" alt="${item.title}" onerror="this.src='https://via.placeholder.com/80?text=AI'">
+                            <div class="tool-content">
+                                <h3 class="tool-title">${item.title}</h3>
+                                <p class="tool-description">${item.desc}</p>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderDetail(slug) {
+            const app = document.getElementById('app');
+            const entry = allEntries.find(e => BloggerCore.generateSlug(e.title.$t) === slug);
+
+            if (!entry) {
+                app.innerHTML = '<div class="loading">❌ Không tìm thấy bài viết! <br><br> <a href="#/" class="menu-link" style="display:inline-block;">Quay lại Trang chủ</a></div>';
+                return;
+            }
+
+            const content = entry.content?.$t || '';
+            const title = entry.title.$t;
+            const fullContent = BloggerCore.extractFullContent(content);
+
+            app.innerHTML = `
+                <div class="detail-inpage">
+                    <a href="javascript:history.back()" class="detail-back">← QUAY LẠI</a>
+                    <h1 class="detail-title">${title}</h1>
+                    <div class="post-content-area">${fullContent}</div>
+                </div>
+            `;
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+
+</html>
